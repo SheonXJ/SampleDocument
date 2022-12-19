@@ -1,5 +1,6 @@
 // load package
 const express = require('express')
+const { pages } = require('./routes/index')
 
 // load env
 if (process.env.NODE_ENV !== 'production') {
@@ -14,9 +15,7 @@ const PORT = process.env.PORT || 3000
 const app = express()
 
 // setting route
-app.get('/', (req, res) => {
-  res.send('hello')
-})
+app.use('/', pages)
 
 // start server
 app.listen(PORT, () => {
