@@ -4,7 +4,7 @@ const router = express.Router()
 const question = require('../../../models/question')
 
 router.get('/', (req, res) => {
-  res.render('index')
+  res.render('score')
 })
 
 module.exports = router
