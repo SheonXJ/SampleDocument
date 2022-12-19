@@ -1,5 +1,6 @@
 // load package
 const express = require('express')
+const exhbs = require('express-handlebars')
 const { pages } = require('./routes/index')
 
 // load env
@@ -14,7 +15,14 @@ require('./config/mongoose')
 const PORT = process.env.PORT || 3000
 const app = express()
 
-// setting route
+// setting template engine
+app.engine('hbs', exhbs.engine({
+  defaultLayout: 'main',
+  extname: 'hbs'
+}))
+app.set('view engine', 'hbs')
+
+// setting middleware
 app.use('/', pages)
 
 // start server
