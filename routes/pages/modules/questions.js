@@ -68,11 +68,11 @@ router.post('/', async (req, res) => {
   }
   const score = Math.floor(correctCount * (100 / questions.length))
   await Score.create({
-    userId: "63a09928ad5fca5b78377aed",
+    userId: '63a1caa547064ccac2545e66',
     score
   })
   res.clearCookie('document')
-  return res.redirect('/')
+  return res.redirect('/users/63a1caa547064ccac2545e66')
 })
 
 module.exports = router

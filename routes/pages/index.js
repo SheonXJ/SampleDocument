@@ -4,9 +4,11 @@ const router = express.Router()
 
 // 引入模組
 const questions = require('./modules/questions')
+const users = require('./modules/users')
 
 // 設定路由
 router.use('/questions', questions)
+router.use('/users', users)
 router.get('/', (req, res) => {
   res.redirect('/questions')
 })
