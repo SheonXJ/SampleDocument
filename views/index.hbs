@@ -18,15 +18,14 @@
       <!-- question list -->
       <ul class="list-group mb-3">
         {{#each questions}}
-        <li class="list-group-item">
-          <a href="/questions/{{this._id}}">
-            {{#if this.userAnswer}}
-            題目{{incremented @index}}({{this.userAnswer}})
-            {{else}}
-            題目{{incremented @index}}
-            {{/if}}
-          </a>
-        </li>
+        <a href="/questions/{{this._id}}" 
+        class="list-group-item list-group-item-action {{#ifCond this._id ../currentQuestion._id}}active{{/ifCond}}">
+          {{#if this.userAnswer}}
+          題目{{incremented @index}}({{this.userAnswer}})
+          {{else}}
+          題目{{incremented @index}}
+          {{/if}}
+        </a>
         {{/each}}
       </ul>
     </div>
@@ -52,28 +51,28 @@
           <div class="row text-center mx-3 mt-2 justify-content-between">
             <!-- options for loop -->
             <div class="col-2 border rounded mb-3 bg-light" style="line-height: 75px;">
-              <a href="/questions/{{currentQuestion._id}}/A?next={{nextQuestion._id}}&number={{currentQuestionIndex}}" class="btn btn-primary align-item-center">A</a>
+              <a href="/questions/{{currentQuestion._id}}/A?next={{nextQuestion._id}}&number={{currentQuestionIndex}}" class="btn align-item-center {{#ifCond (lookup cookieAnswer currentQuestionIndex) 'A'}}btn-success{{else}}btn-primary{{/ifCond}}">A</a>
             </div>
             <div class="col-9 border rounded mb-3 bg-light" style="line-height: 75px;">
               {{currentQuestion.A}}
             </div>
 
             <div class="col-2 border rounded mb-3 bg-light" style="line-height: 75px;">
-              <a href="/questions/{{currentQuestion._id}}/B?next={{nextQuestion._id}}&number={{currentQuestionIndex}}" class="btn btn-primary align-item-center">B</a>
+              <a href="/questions/{{currentQuestion._id}}/B?next={{nextQuestion._id}}&number={{currentQuestionIndex}}" class="btn align-item-center {{#ifCond (lookup cookieAnswer currentQuestionIndex) 'B'}}btn-success{{else}}btn-primary{{/ifCond}}">B</a>
             </div>
             <div class="col-9 border rounded mb-3 bg-light" style="line-height: 75px;">
               {{currentQuestion.B}}
             </div>
 
             <div class="col-2 border rounded mb-3 bg-light" style="line-height: 75px;">
-              <a href="/questions/{{currentQuestion._id}}/C?next={{nextQuestion._id}}&number={{currentQuestionIndex}}" class="btn btn-primary align-item-center">C</a>
+              <a href="/questions/{{currentQuestion._id}}/C?next={{nextQuestion._id}}&number={{currentQuestionIndex}}" class="btn align-item-center {{#ifCond (lookup cookieAnswer currentQuestionIndex) 'C'}}btn-success{{else}}btn-primary{{/ifCond}}">C</a>
             </div>
             <div class="col-9 border rounded mb-3 bg-light" style="line-height: 75px;">
               {{currentQuestion.C}}
             </div>
 
             <div class="col-2 border rounded mb-3 bg-light" style="line-height: 75px;">
-              <a href="/questions/{{currentQuestion._id}}/D?next={{nextQuestion._id}}&number={{currentQuestionIndex}}" class="btn btn-primary align-item-center">D</a>
+              <a href="/questions/{{currentQuestion._id}}/D?next={{nextQuestion._id}}&number={{currentQuestionIndex}}" class="btn align-item-center {{#ifCond (lookup cookieAnswer currentQuestionIndex) 'D'}}btn-success{{else}}btn-primary{{/ifCond}}">D</a>
             </div>
             <div class="col-9 border rounded mb-3 bg-light" style="line-height: 75px;">
               {{currentQuestion.D}}
