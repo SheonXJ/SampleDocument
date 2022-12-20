@@ -1,6 +1,8 @@
 // load package
 const express = require('express')
 const exhbs = require('express-handlebars')
+const cookieParser = require('cookie-parser')
+const handlebarsHelper = require('./helper/handlebars-helper')
 const { pages } = require('./routes/index')
 
 // load env
@@ -18,11 +20,12 @@ const app = express()
 // setting template engine
 app.engine('hbs', exhbs.engine({
   defaultLayout: 'main',
-  extname: 'hbs'
+  extname: 'hbs',
+  helpers: handlebarsHelper
 }))
 app.set('view engine', 'hbs')
-
 // setting middleware
+app.use(cookieParser())
 app.use('/', pages)
 
 // start server
