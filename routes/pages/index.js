@@ -3,9 +3,12 @@ const express = require('express')
 const router = express.Router()
 
 // 引入模組
-const home = require('../pages/modules/home')
+const questions = require('./modules/questions')
 
 // 設定路由
-router.use('/', home)
+router.use('/questions', questions)
+router.get('/', (req, res) => {
+  res.redirect('/questions')
+})
 
 module.exports = router
