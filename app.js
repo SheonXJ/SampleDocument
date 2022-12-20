@@ -2,7 +2,7 @@
 const express = require('express')
 const exhbs = require('express-handlebars')
 const cookieParser = require('cookie-parser')
-const { handlebarsHelper } = require('./helper/handlebars-helper')
+const handlebarsHelper = require('./helper/handlebars-helper')
 const { pages } = require('./routes/index')
 
 // load env

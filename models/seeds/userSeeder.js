@@ -32,7 +32,7 @@ db.once('open', async () => {
       for (let i = 0; i < 5; i++) {
         Score.create({
           userId: user._id,
-          score: Math.floor(Math.random() * SEED_SCORE.length)
+          score: SEED_SCORE[Math.floor(Math.random() * SEED_SCORE.length)]
         })
       }
     })
