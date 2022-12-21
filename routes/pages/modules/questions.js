@@ -7,13 +7,14 @@ const User = require('../../../models/user')
 const Score = require('../../../models/score')
 
 router.get('/score/:id', async (req, res) => {
+  const { score, correctCount } = req.query
   const userId = req.params.id
   const user = await User.findById(userId).lean()
   const scoreList = await Score.find({ userId }).lean().sort({ createdAt: -1 })
   scoreList.forEach(score => {
     score.createdAt = dateformat(score.createdAt, 'yyyy-mm-dd HH:mm:ss')
   })
-  return res.render('score', { scoreList, user })
+  return res.render('score', { scoreList, user, score, correctCount })
 })
 router.post('/:id/:option', (req, res) => {
   const option = req.params.option
@@ -86,7 +87,8 @@ router.post('/', async (req, res) => {
   })
   // 清除cookie
   res.clearCookie('document')
-  return res.redirect(`/questions/score/${user._id}`)
+  // URL傳送分數相關參數for顯示modal
+  return res.redirect(`/questions/score/${user._id}?score=${score}&correctCount=${correctCount}/${questions.length}`)
 })
 
 module.exports = router

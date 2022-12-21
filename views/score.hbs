@@ -22,3 +22,24 @@
     </table>
   </div>
 </div>
+
+<!-- Modal 判斷是否有傳入score 再決定要不要show-->
+{{#if score}}
+<div class="modal fade" id="scoreModal" tabindex="-1" aria-labelledby="scoreModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="scoreModalLabel">作答完畢</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <strong>分數：{{score}}</strong></br>
+        <strong>答對題數：{{correctCount}}</strong>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+{{/if}}

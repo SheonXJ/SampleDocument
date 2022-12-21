@@ -1,20 +1,24 @@
 <div class="body">
   <div class="row justify-content-center">
     <!-- left content -->
-    <div class="col-2 m-3 border bg-light text-center">
+    <div class="col-2 col m-3 border bg-light text-center">
       <!-- user profile -->
-      <div class="card my-3 mx-auto" style="width: 100%;">
+      <div class="card my-3 mx-auto bg-light" style="width: 100%;">
         <h5 class="card-title mt-2">{{user.name}}</h5>
         <img src="https://fakepersongenerator.com/Face/female/female1023202206940.jpg" class="card-img-top mx-auto"
           style="border-radius: 50%; max-width: min-content; max-height: min-content;" alt="...">
         <div class="card-body">
           <form action="/questions" method="post">
-            <button type="submit" class="btn btn-success" onclick="return confirm('確定要交卷嗎？')">交卷</button>
+            <button type="submit" class="btn btn-success" onclick="return confirm('確定要交卷嗎？')" data-bs-toggle="modal" data-bs-target="#exampleModal">交卷</button>
           </form>
         </div>
       </div>
       <!-- flash message -->
       <div class="flash-message"></div>
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>請作答！</strong></br>請選擇題目作答！
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
       <!-- question list -->
       <ul class="list-group mb-3">
         {{#each questions}}
@@ -29,7 +33,7 @@
         {{/each}}
       </ul>
     </div>
-
+    
     <!-- middle content -->
     <div class="col-6">
       <div class="row">
