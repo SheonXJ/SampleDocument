@@ -26,6 +26,7 @@ app.engine('hbs', exhbs.engine({
 app.set('view engine', 'hbs')
 // setting middleware
 app.use(cookieParser())
+app.use(express.urlencoded({ extended: true }))
 app.use('/', pages)
 
 // start server
