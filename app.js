@@ -2,6 +2,7 @@
 const express = require('express')
 const exhbs = require('express-handlebars')
 const cookieParser = require('cookie-parser')
+const path = require('path')
 const session = require('express-session')
 const usePassport = require('./config/passport')
 const handlebarsHelper = require('./helper/handlebars-helper')
@@ -27,6 +28,8 @@ app.engine('hbs', exhbs.engine({
 }))
 app.set('view engine', 'hbs')
 // setting middleware
+// eslint-disable-next-line n/no-path-concat
+app.use('/stylesheets', express.static(path.join(__dirname + '/stylesheets')))
 app.use(session({
   secret: 'ThisIsMySecret',
   resave: false,

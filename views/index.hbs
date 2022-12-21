@@ -1,7 +1,7 @@
 <div class="body">
   <div class="row justify-content-center">
     <!-- left content -->
-    <div class="col-2 col m-3 border bg-light text-center">
+    <div class="col-10 col-sm-2 m-3 border bg-light text-center">
       <!-- user profile -->
       <div class="card my-3 mx-auto bg-light" style="width: 100%;">
         <h5 class="card-title mt-2">{{user.name}}</h5>
@@ -35,7 +35,7 @@
     </div>
     
     <!-- middle content -->
-    <div class="col-6">
+    <div class="col-10 col-sm-6">
       <div class="row">
         <!-- question -->
         <div class="col-12">
@@ -54,39 +54,39 @@
         <div class="col-12">
           <div class="row text-center mx-3 mt-2 justify-content-between">
             <!-- options for loop -->
-            <div class="col-2 border rounded mb-3 bg-light" style="line-height: 75px;">
+            <div class="col-3 col-sm-2 border rounded mb-3 bg-light" style="line-height: 75px;">
               <form action="/questions/{{currentQuestion._id}}/A?next={{nextQuestion._id}}&number={{currentQuestionIndex}}" method="post">
                 <button class="btn align-item-center {{#ifCond (lookup cookieAnswer currentQuestionIndex) 'A'}}btn-success{{else}}btn-primary{{/ifCond}}"> A</button>
               </form>
             </div>
-            <div class="col-9 border rounded mb-3 bg-light" style="line-height: 75px;">
+            <div class="col-8 col-sm-9 border rounded mb-3 bg-light" style="line-height: 75px;">
               {{currentQuestion.A}}
             </div>
 
-            <div class="col-2 border rounded mb-3 bg-light" style="line-height: 75px;">
+            <div class="col-3 col-sm-2 border rounded mb-3 bg-light" style="line-height: 75px;">
               <form action="/questions/{{currentQuestion._id}}/B?next={{nextQuestion._id}}&number={{currentQuestionIndex}}" method="post">
                 <button class="btn align-item-center {{#ifCond (lookup cookieAnswer currentQuestionIndex) 'B'}}btn-success{{else}}btn-primary{{/ifCond}}"> B</button>
               </form>
             </div>
-            <div class="col-9 border rounded mb-3 bg-light" style="line-height: 75px;">
+            <div class="col-8 col-sm-9 border rounded mb-3 bg-light" style="line-height: 75px;">
               {{currentQuestion.B}}
             </div>
 
-            <div class="col-2 border rounded mb-3 bg-light" style="line-height: 75px;">
+            <div class="col-3 col-sm-2 border rounded mb-3 bg-light" style="line-height: 75px;">
               <form action="/questions/{{currentQuestion._id}}/C?next={{nextQuestion._id}}&number={{currentQuestionIndex}}" method="post">
                 <button class="btn align-item-center {{#ifCond (lookup cookieAnswer currentQuestionIndex) 'C'}}btn-success{{else}}btn-primary{{/ifCond}}"> C</button>
               </form>
             </div>
-            <div class="col-9 border rounded mb-3 bg-light" style="line-height: 75px;">
+            <div class="col-8 col-sm-9 border rounded mb-3 bg-light" style="line-height: 75px;">
               {{currentQuestion.C}}
             </div>
 
-            <div class="col-2 border rounded mb-3 bg-light" style="line-height: 75px;">
+            <div class="col-3 col-sm-2 border rounded mb-3 bg-light" style="line-height: 75px;">
               <form action="/questions/{{currentQuestion._id}}/D?next={{nextQuestion._id}}&number={{currentQuestionIndex}}" method="post">
                 <button class="btn align-item-center {{#ifCond (lookup cookieAnswer currentQuestionIndex) 'D'}}btn-success{{else}}btn-primary{{/ifCond}}"> D</button>
               </form>
             </div>
-            <div class="col-9 border rounded mb-3 bg-light" style="line-height: 75px;">
+            <div class="col-8 col-sm-9 border rounded mb-3 bg-light" style="line-height: 75px;">
               {{currentQuestion.D}}
             </div>
           </div>
@@ -95,7 +95,7 @@
     </div>
 
     <!-- right content -->
-    <div class="col-2">
+    <div class="col-10 col-sm-2">
       <!-- Ads part -->
       <div class="my-3 bg-light" style="width: 75%;">
         <div class="card m-3" style="width: 80%;">
