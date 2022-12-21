@@ -1,0 +1,7 @@
+/* 隱藏scroll bar(safari、chrome、IE) */
+body::-webkit-scrollbar {
+  display: none;
+}
+body {
+  -ms-overflow-style: none;
+}
