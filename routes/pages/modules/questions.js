@@ -1,10 +1,21 @@
 const express = require('express')
+const dateformat = require('dateformat')
 const router = express.Router()
 
 const Question = require('../../../models/question')
+const User = require('../../../models/user')
 const Score = require('../../../models/score')
 
-router.get('/:id/:option', (req, res) => {
+router.get('/score/:id', async (req, res) => {
+  const userId = req.params.id
+  const user = await User.findById(userId).lean()
+  const scoreList = await Score.find({ userId }).lean().sort({ createdAt: -1 })
+  scoreList.forEach(score => {
+    score.createdAt = dateformat(score.createdAt, 'yyyy-mm-dd HH:mm:ss')
+  })
+  return res.render('score', { scoreList, user })
+})
+router.post('/:id/:option', (req, res) => {
   const option = req.params.option
   const nextQuestionId = req.query.next
   const questionNumber = req.query.number
@@ -58,6 +69,7 @@ router.get('/', (req, res) => {
     .catch(err => console.log(err))
 })
 router.post('/', async (req, res) => {
+  const user = req.user
   const cookieAnswer = req.cookies.document?.cookieAnswer || []
   // 取得題目答案後，與cookie的答案對比，算出分數
   const questions = await Question.find().lean()
@@ -67,12 +79,14 @@ router.post('/', async (req, res) => {
     if (questionsAnswer[i] === cookieAnswer[i]) correctCount++
   }
   const score = Math.floor(correctCount * (100 / questions.length))
+  // 將分數存入資料庫
   await Score.create({
-    userId: '63a1caa547064ccac2545e66',
+    userId: user._id,
     score
   })
+  // 清除cookie
   res.clearCookie('document')
-  return res.redirect('/users/63a1caa547064ccac2545e66')
+  return res.redirect(`/questions/score/${user._id}`)
 })
 
 module.exports = router

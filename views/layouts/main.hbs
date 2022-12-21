@@ -30,8 +30,13 @@
           </li>
         </ul>
       </div>
-      <div class="">
-          <a class="nav-link text-light" href="/users/63a1caa547064ccac2545e66"><i class="fas fa-regular fa-user"></i>My Account</a>
+      <div class="d-flex">
+        <a class="nav-link text-light" href="/questions/score/{{user._id}}"><i class="fas fa-regular fa-user"></i>My Account</a>
+        {{#if user}}
+        <a class="btn btn-outline-light" href="/users/logout">Logout</a>
+        {{else}}
+        <a class="btn btn-outline-light" href="/users/login">Login</a>
+        {{/if}}
       </div>
     </div>
   </nav>
